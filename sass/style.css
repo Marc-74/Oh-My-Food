@@ -3,31 +3,22 @@ body {
   margin: 0%;
 }
 
-/** mobile first **/
-
+/* Mobile First */
 @media (max-width: 768px) {
-  .logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 1.25rem 1rem;
-  }
-
+  .logo,
   .geolocalisation {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 1.25rem 1rem;
-    background-color: #eaeaea;
-    font-size: 1.2rem;
-    position: relative;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 20px;
   }
-
-  .fa-solid {
-    margin-right: 1rem;
+  .fa-location-dot:before {
+    color: #000000;
+    cursor: pointer;
   }
-
   .reservation {
     display: flex;
     flex-direction: column;
@@ -37,13 +28,11 @@ body {
     text-align: center;
     font-size: 25px;
   }
-
   .reservation p {
     margin-bottom: 50px;
     font-weight: 300;
   }
-
-  .explorer-btn {
+  .reservation .explorer-btn {
     width: 300px;
     height: 60px;
     color: white;
@@ -53,5 +42,158 @@ body {
     border-radius: 30px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
     border: none;
+    margin-bottom: 50px;
   }
-}
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+  }
+  .menu-container .menu-btn {
+    display: flex;
+    flex-direction: row;
+    height: 72.38px;
+    background: #f7f7f7;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    align-items: center;
+    gap: 10%;
+    margin-bottom: 30px;
+    width: 90%;
+    cursor: pointer;
+    margin-left: 30px;
+    border: none;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+  }
+  .menu-nombre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-left: -12px;
+    width: 1.5em;
+    height: 1.5em;
+    background: #9356dc;
+    border-radius: 50%;
+    color: white;
+    min-width: 1.5em;
+  }
+  .fa-solid {
+    color: #7e7e7e;
+  }
+  .menu-container h2 {
+    margin-bottom: 50px;
+    font-size: 30px;
+    padding-left: 20px;
+  }
+  a:hover .fa-store:before {
+    color: #9356DC;
+  }
+  .fa-store:before {
+    font-size: 20px;
+  }
+  .fa-list:before {
+    font-size: 20px;
+  }
+  .fa-mobile-screen-button:before {
+    font-size: 20px;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    background: #f7f7f7;
+  }
+  .cards .card-content {
+    background: #f7f7f7;
+    padding: 3vw;
+  }
+  .cards .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 25px;
+  }
+  .cards .card .notification-nouveau {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #99e2d0;
+    color: #008766;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .cards .card .card-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 250px;
+  }
+  .cards .card .card-titre {
+    line-height: 0.5;
+    padding-left: 13px;
+    margin-bottom: 15px;
+  }
+  .cards .card .card-icone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cards .card .card-icone .icone-coeur {
+    padding-right: 15px;
+    font-size: 20px;
+  }
+  .cards .card .card-content img {
+    width: 100%;
+    height: 230px;
+    border-radius: 15px 15px 0 0;
+  }
+  .cards .card .card-alignement h2 {
+    padding-bottom: 20px;
+  }
+  .cards h2 {
+    padding-left: 20px;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    background: #353535;
+    height: 185px;
+  }
+  .footer .footer-logo {
+    filter: invert(100%);
+    width: 122px;
+    padding: 20px 25px 20px 25px;
+  }
+  .footer .footer-icone {
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 25px;
+    line-height: 10%;
+    gap: 10px;
+  }
+  .footer .footer-icone p {
+    cursor: pointer;
+  }
+  .footer .footer-icone a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .footer .footer-icone .fa-utensils,
+  .footer .footer-icone .fa-handshake-angle {
+    color: #ffffff;
+  }
+}/*# sourceMappingURL=style.css.map */

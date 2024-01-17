@@ -1,0 +1,231 @@
+@import "./_variables";
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0%;
+}
+
+/* Mobile First */
+@media (max-width: 768px) {
+  .logo,
+  .geolocalisation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 20px;
+   
+  }
+
+  .fa-location-dot:before {
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .reservation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: $background-color;
+    text-align: center;
+    font-size: 25px;
+
+    p {
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
+
+    .explorer-btn {
+      width: 300px;
+      height: 60px;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      background: linear-gradient(1deg, $primary-color -11.44%, $secondary-color 123.93%);
+      border-radius: 30px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+      border: none;
+      margin-bottom: 50px;
+    }
+  }
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+  }
+
+  .menu-container .menu-btn {
+    display: flex;
+    flex-direction: row;
+    height: 72.38px;
+    background: #f7f7f7;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    align-items: center;
+    gap: 10%;
+    margin-bottom: 30px;
+    width: 90%;
+    cursor: pointer;
+    margin-left: 30px;
+    border: none;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+  }
+
+  .menu-nombre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-left: -12px;
+    width: 1.5em;
+    height: 1.5em;
+    background: #9356dc;
+    border-radius: 50%;
+    color: white;
+    min-width: 1.5em;
+  }
+
+  .fa-solid {
+    color: #7e7e7e;
+  }
+
+  .menu-container h2 {
+    margin-bottom: 50px;
+    font-size: 30px;
+    padding-left: 20px;
+  }
+
+  a:hover .fa-store:before {
+    color: #9356DC;
+  }
+
+  .fa-store:before {
+    font-size: 20px;
+  }
+
+  .fa-list:before {
+    font-size: 20px;
+  }
+
+  .fa-mobile-screen-button:before {
+    font-size: 20px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    background: $background-color;
+
+    .card-content {
+      background: $background-color;
+      padding: 3vw;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: $light-color;
+      border-radius: 15px;
+      margin-bottom: 25px;
+
+      .notification-nouveau {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: $notification-color;
+        color: $green-color;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 2px;
+        z-index: 1;
+      }
+
+      .card-img {
+        object-fit: cover;
+        height: 250px;
+      }
+
+      .card-titre {
+        line-height: 0.5;
+        padding-left: 13px;
+        margin-bottom: 15px;
+      }
+
+      .card-icone {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .icone-coeur {
+          padding-right: 15px;
+          font-size: 20px;
+        }
+      }
+
+      .card-content img {
+        width: 100%;
+        height: 230px;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .card-alignement h2 {
+        padding-bottom: 20px;
+      }
+    }
+
+    h2 {
+      padding-left: 20px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    background: $footer-background;
+    height: $footer-height;
+
+    .footer-logo {
+      filter: invert(100%);
+      width: 122px;
+      padding: 20px 25px 20px 25px;
+    }
+
+    .footer-icone {
+      display: flex;
+      flex-direction: row;
+      color: $light-color;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 25px;
+      line-height: 10%;
+      gap: 10px;
+
+      p {
+        cursor: pointer;
+      }
+
+      a {
+        color: $light-color;
+        text-decoration: none;
+      }
+
+      .fa-utensils,
+      .fa-handshake-angle {
+        color: $light-color;
+      }
+    }
+  }
+}
