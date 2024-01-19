@@ -1,0 +1,36 @@
+
+/** Les mixins en SCSS sont des portions de code réutilisables qui permettent d'inclure des styles CSS de manière modulaire.**/
+
+@mixin flex-row($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+ 
+@mixin flex-column($direction: column, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+
+@mixin card-styles {
+    @include flex-column;
+    position: relative;
+    background: $light-color;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+@mixin gradient-background($primary-color, $secondary-color) {
+    background: linear-gradient(1deg, $primary-color -13%, $secondary-color 125%);
+}
+
+@mixin box-shadow($color: rgba(0, 0, 0, 0.25)) {
+    box-shadow: 0 0.3rem 0.3rem $color, 0 -0.3rem 0.3rem $color;
+}
+
+/** transition de la couleur sur le bouton coeur **/
+
+@mixin transition {
+    transition: all 0.5s ease-in-out;
+  }

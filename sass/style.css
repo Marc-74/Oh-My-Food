@@ -1,12 +1,16 @@
+@charset "UTF-8";
+/** Les variables en SCSS permettent de stocker des valeurs réutilisables dans une 
+feuille de style, pour simplifierla gestion et la mise à jour des propriétés communes. */
+/** Les mixins en SCSS sont des portions de code réutilisables qui permettent d'inclure des styles CSS de manière modulaire.**/
+/** transition de la couleur sur le bouton coeur **/
 body {
   font-family: "Roboto", sans-serif;
   margin: 0%;
 }
 
-/* Mobile First */
+/** version mobile **/
 @media (max-width: 768px) {
-  .logo,
-  .geolocalisation {
+  .logo, .geolocalisation {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -15,12 +19,14 @@ body {
     font-size: 20px;
     gap: 20px;
   }
-  .fa-location-dot:before {
-    color: #000000;
-    cursor: pointer;
+  .geolocalisation {
+    background-color: #eaeaea;
+    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.25), 0 -0.3rem 0.3rem rgba(0, 0, 0, 0.25);
   }
   .reservation {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     padding: 30px;
@@ -28,49 +34,59 @@ body {
     text-align: center;
     font-size: 25px;
   }
-  .reservation p {
-    margin-bottom: 50px;
-    font-weight: 300;
-  }
-  .reservation .explorer-btn {
+  .explorer-btn {
+    background: linear-gradient(1deg, #9356DC -13%, #FF79DA 125%);
     width: 300px;
     height: 60px;
     color: white;
     cursor: pointer;
     font-size: 20px;
-    background: linear-gradient(1deg, #9356DC -11.44%, #FF79DA 123.93%);
     border-radius: 30px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     border: none;
     margin-bottom: 50px;
+    transition-property: transform;
+    transition-duration: 150ms;
+  }
+  .explorer-btn:hover {
+    /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
+    transform: scale(1.15);
+    opacity: 0.8;
   }
   .menu-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     margin-top: 50px;
   }
   .menu-container .menu-btn {
+    /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 72.38px;
     background: #f7f7f7;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     align-items: center;
     gap: 10%;
     margin-bottom: 30px;
+    margin-left: 30px;
     width: 90%;
     cursor: pointer;
-    margin-left: 30px;
     border: none;
     text-decoration: none;
-    color: #000000;
+    color: #000;
     font-weight: 700;
+    justify-content: flex-start;
+  }
+  .menu-container h2 {
+    margin-bottom: 50px;
+    font-size: 30px;
   }
   .menu-nombre {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -83,44 +99,45 @@ body {
     color: white;
     min-width: 1.5em;
   }
-  .fa-solid {
-    color: #7e7e7e;
-  }
-  .menu-container h2 {
-    margin-bottom: 50px;
-    font-size: 30px;
-    padding-left: 20px;
-  }
-  a:hover .fa-store:before {
-    color: #9356DC;
-  }
-  .fa-store:before {
-    font-size: 20px;
-  }
-  .fa-list:before {
-    font-size: 20px;
-  }
-  .fa-mobile-screen-button:before {
-    font-size: 20px;
-  }
   .cards {
     display: flex;
     flex-direction: column;
-    background: #f7f7f7;
-  }
-  .cards .card-content {
-    background: #f7f7f7;
-    padding: 3vw;
+    justify-content: center;
   }
   .cards .card {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
     background: #ffffff;
     border-radius: 15px;
     margin-bottom: 25px;
+    cursor: pointer;
   }
-  .cards .card .notification-nouveau {
+  .cards .card-content {
+    /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
+    background: #f7f7f7;
+    padding: 3vw;
+  }
+  .cards .card-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 250px;
+    border-radius: 15px 15px 0 0;
+  }
+  .cards .card-titre {
+    line-height: 0.5;
+    padding-left: 13px;
+    margin-bottom: 15px;
+  }
+  .cards .card-icone {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .notification-nouveau {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -132,52 +149,64 @@ body {
     border-radius: 2px;
     z-index: 1;
   }
-  .cards .card .card-img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 250px;
+  /** icones **/
+  .fa-solid {
+    color: #7e7e7e;
   }
-  .cards .card .card-titre {
-    line-height: 0.5;
-    padding-left: 13px;
-    margin-bottom: 15px;
+  a:hover .fa-store:before {
+    color: #9356dc;
   }
-  .cards .card .card-icone {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .cards .card .card-icone .icone-coeur {
-    padding-right: 15px;
+  .fa-store:before,
+  .fa-list:before,
+  .fa-mobile-screen-button:before {
     font-size: 20px;
   }
-  .cards .card .card-content img {
-    width: 100%;
-    height: 230px;
-    border-radius: 15px 15px 0 0;
+  /** icone coeur **/
+  .icone-coeur {
+    position: relative;
   }
-  .cards .card .card-alignement h2 {
-    padding-bottom: 20px;
+  .icone-coeur input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
   }
-  .cards h2 {
+  .icone-coeur .fa-heart {
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    margin-left: -55px;
+    font-size: 20px;
+    margin-top: -5px;
+  }
+  .icone-coeur input[type=checkbox]:checked ~ .icone-changement {
+    opacity: 1;
+  }
+  .icone-changement {
+    opacity: 0;
+    background: linear-gradient(1deg, #9356DC -13%, #FF79DA 125%);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  h2 {
     padding-left: 20px;
   }
+  /** footer **/
   .footer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding-bottom: 20px;
     background: #353535;
-    height: 185px;
   }
-  .footer .footer-logo {
+  .footer-logo {
+    /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
     filter: invert(100%);
     width: 122px;
-    padding: 20px 25px 20px 25px;
+    padding: 20px 25px;
   }
-  .footer .footer-icone {
+  .footer-icone {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     color: #ffffff;
     align-items: center;
     justify-content: flex-start;
@@ -185,15 +214,14 @@ body {
     line-height: 10%;
     gap: 10px;
   }
-  .footer .footer-icone p {
+  .footer-icone p {
     cursor: pointer;
   }
-  .footer .footer-icone a {
+  .footer-icone a {
     color: #ffffff;
     text-decoration: none;
   }
-  .footer .footer-icone .fa-utensils,
-  .footer .footer-icone .fa-handshake-angle {
+  .footer-icone-utensils, .footer-icone-handshake-angle {
     color: #ffffff;
   }
 }/*# sourceMappingURL=style.css.map */
