@@ -1,5 +1,6 @@
+/** Les mixins en SCSS sont des morceaux de code réutilisables qui permettent d'inclure des styles CSS de manière modulaire.**/
 
-/** Les mixins en SCSS sont des portions de code réutilisables qui permettent d'inclure des styles CSS de manière modulaire.**/
+/** displays flexbox **/
 
 @mixin flex-row($direction: row, $justify: center, $align: center) {
     display: flex;
@@ -13,19 +14,24 @@
     justify-content: $justify;
 }
 
-@mixin card-styles {
+/** cartes restaurants **/
+
+@mixin card {
     @include flex-column;
     position: relative;
     background: $light-color;
     border-radius: 15px;
     margin-bottom: 25px;
+   
 }
 
 @mixin gradient-background($primary-color, $secondary-color) {
-    background: linear-gradient(1deg, $primary-color -13%, $secondary-color 125%);
+    background: linear-gradient(1deg, $primary-color 0%, $secondary-color 100%);
 }
 
-@mixin box-shadow($color: rgba(0, 0, 0, 0.25)) {
+/** ombre portée sur le bouton explorer **/
+
+@mixin box-shadow($color: rgba(63, 59, 59, 0.15)) {
     box-shadow: 0 0.3rem 0.3rem $color, 0 -0.3rem 0.3rem $color;
 }
 
@@ -34,3 +40,12 @@
 @mixin transition {
     transition: all 0.5s ease-in-out;
   }
+
+
+/* titres h2 */
+
+@mixin h2 {
+    font-size: 30px;
+    padding-left: 20px;
+
+}

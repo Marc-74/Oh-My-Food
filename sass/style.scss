@@ -1,14 +1,174 @@
 @import "./_variables";
 @import "./_mixins";
+@import "./_animation";
 
 body {
   font-family: "Roboto", sans-serif;
   margin: 0%;
+  
 }
 
+
+.loader {
+  @include flex-row;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 1;
+  animation-name: fade-out;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: $primary-color transparent $grey-color;
+  animation: spin 1.2s linear infinite;
+}
+
+/** version destop **/
+
+.menu-responsive-one {
+  @include flex-row;
+  width: 80%;
+  margin-bottom: 40px;
+}
+.menu-responsive{
+
+  width: 80%;
+}
+
+  .logo, .geolocalisation {
+    @include flex-row;
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .geolocalisation {
+    background-color: $accent-color;
+    @include box-shadow;
+  }
+
+  .reservation {
+    @include flex-row;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: $background-color;
+    text-align: center;
+    font-size: 25px;
+  
+  & p {
+    font-weight: 300;
+    margin-top: -1px;
+    margin-bottom: 45px;
+}
+  }
+  .explorer-btn {
+    @include gradient-background($primary-color, $secondary-color);
+    @include box-shadow;
+    width: 300px;
+    height: 60px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 30px;
+ 
+    border: none;
+    margin-bottom: 50px;
+    transition-property: transform;
+    transition-duration: 150ms;
+
+    &:hover {
+      /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
+      transform: scale(1.15);
+      opacity: 0.8;
+    }
+  }
+
+  .menu-container {
+    @include flex-column;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    margin-top: 0px;
+ 
+    align-content: center;
+
+    & .menu-btn {
+      /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
+      @include flex-row;
+      height: 72.38px;
+      background: #f7f7f7;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      align-items: center;
+      gap: 10%;
+      margin-bottom: 30px;
+      margin-left: 30px;
+      width: 85%;
+      cursor: pointer;
+    border: none;
+      text-decoration: none;
+      color: #000;
+      font-weight: 700;
+      justify-content: flex-start;
+    }
+  }
+
+  .menu-container h2 {
+   @include h2
+  }
+
+  .menu-nombre {
+    @include flex-column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-left: -12px;
+    width: 1.5em;
+    height: 1.5em;
+    background: #9356dc;
+    border-radius: 50%;
+    color: white;
+    min-width: 1.5em;
+  }
+
+  
+
+
+/** version tablette **/
 /** version mobile **/
 
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
+
+  .menu-responsive-one {
+    @include flex-column;
+    width: 100%;
+  }
   .logo, .geolocalisation {
     @include flex-row;
     padding: 1.25rem 1rem;
@@ -40,7 +200,7 @@ body {
     cursor: pointer;
     font-size: 20px;
     border-radius: 30px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  @include box-shadow;
     border: none;
     margin-bottom: 50px;
     transition-property: transform;
@@ -56,6 +216,7 @@ body {
   .menu-container {
     @include flex-column;
     margin-top: 50px;
+  
 
     & .menu-btn {
       /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
@@ -68,7 +229,7 @@ body {
       gap: 10%;
       margin-bottom: 30px;
       margin-left: 30px;
-      width: 90%;
+      width: 92%;
       cursor: pointer;
 
       border: none;
@@ -78,10 +239,18 @@ body {
       justify-content: flex-start;
     }
   }
+  .menu-responsive{
+    @include flex-column;
+     width: 100%;
+   
+
+     & h2{
+    @include h2;
+    }
+  }
 
   .menu-container h2 {
-    margin-bottom: 50px;
-    font-size: 30px;
+   @include h2;
   }
 
   .menu-nombre {
@@ -93,6 +262,7 @@ body {
     width: 1.5em;
     height: 1.5em;
     background: #9356dc;
+
     border-radius: 50%;
     color: white;
     min-width: 1.5em;
@@ -100,15 +270,18 @@ body {
 
   .cards {
     @include flex-column;
+  
 
     .card {
-      @include card-styles;
+      @include card;
       cursor: pointer;
 
       &-content {
         /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
         background: $background-color;
-        padding: 3vw;
+        padding: 3.4vw;
+        width: 93%;
+        
       }
 
       &-img {
@@ -187,14 +360,11 @@ body {
   .icone-changement {
     opacity: 0;
     @include gradient-background($primary-color, $secondary-color);
-    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
   }
   
 
-  h2 {
-    padding-left: 20px;
-  }
 
   /** footer **/
 
@@ -202,6 +372,7 @@ body {
     @include flex-column;
     padding-bottom: 20px;
     background: $footer-background;
+    align-items: flex-start;
 
     &-logo {
       /** Concaténation (relier) des sélecteurs avec leur éléments parents en utilisant des esperluettes (&) **/
@@ -219,6 +390,14 @@ body {
       line-height: 10%;
       gap: 10px;
 
+   
+
+      &-utensils,
+      &-handshake-angle {
+        color: $light-color;
+     
+      }
+
       p {
         cursor: pointer;
       }
@@ -226,11 +405,6 @@ body {
       a {
         color: $light-color;
         text-decoration: none;
-      }
-
-      &-utensils,
-      &-handshake-angle {
-        color: $light-color;
       }
     }
   }
