@@ -1,14 +1,5 @@
 /** loader **/
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+@keyframes spin { to { transform: rotate(1turn); } }
 
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-}
+@keyframes fade-out { to { opacity: 0; } }
