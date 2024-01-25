@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /** Les variables en SCSS permettent de stocker des valeurs réutilisables dans une 
 feuille de style, pour simplifierla gestion et la mise à jour des propriétés communes. */
-/** couleurs du sie **/
+/** couleurs du site **/
 /** Les mixins en SCSS sont des morceaux de code réutilisables qui permettent d'inclure des styles CSS de manière modulaire.**/
 /** displays flexbox **/
 /** cartes restaurants **/
@@ -19,6 +19,15 @@ feuille de style, pour simplifierla gestion et la mise à jour des propriétés 
     opacity: 0;
   }
 }
+/* animations pages restaurants */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 body {
   font-family: "Roboto", sans-serif;
   margin: 0%;
@@ -31,7 +40,7 @@ body {
   justify-content: center;
   position: fixed;
   inset: 0;
-  background-color: #ffffff, 90%; /** variable de couleur & function intensité **/
+  background-color: rgba(247, 247, 247, 0.9); /** variable de couleur & function intensité **/
   z-index: 9999;
   align-items: center;
   pointer-events: none;
@@ -72,15 +81,13 @@ body {
   font-weight: 600;
   font-size: 20px;
   gap: 20px;
-  margin-top: 10px;
 }
 
 .geolocalisation {
   background-color: #eaeaea;
-  box-shadow: 0 0.3rem 0.3rem rgba(63, 59, 59, 0.15), 0 -0.3rem 0.3rem rgba(63, 59, 59, 0.15);
 }
 
-.reservation {
+.container-bouton {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -91,16 +98,16 @@ body {
   text-align: center;
   font-size: 25px;
 }
-.reservation p { /** concaténation ( = relier ) en utilisant une esperluette (&) **/
+.container-bouton p { /** concaténation ( = relier ) en utilisant une esperluette (&) **/
   font-weight: 300;
   margin-top: -1px;
   margin-bottom: 45px;
 }
 
-.explorer-btn {
+.bouton {
   background: linear-gradient(1deg, #9356DC 0%, #FF79DA 100%);
   box-shadow: 0 0.3rem 0.3rem rgba(63, 59, 59, 0.15), 0 -0.3rem 0.3rem rgba(63, 59, 59, 0.15);
-  color: #ffffff;
+  color: #f7f7f7;
   width: 300px;
   height: 60px;
   font-size: 20px;
@@ -111,7 +118,7 @@ body {
   transition-duration: 150ms;
   cursor: pointer;
 }
-.explorer-btn:hover {
+.bouton:hover {
   transform: scale(1.15);
   opacity: 0.8;
 }
@@ -136,7 +143,7 @@ body {
   align-items: center;
   gap: 10%;
   margin: 0 0 30px 30px;
-  width: 85%;
+  width: 90%;
   border: none;
   text-decoration: none;
   color: #000000;
@@ -146,8 +153,8 @@ body {
 }
 
 .menu-container h2 {
-  font-size: 30px;
-  padding-left: 20px;
+  font-size: 25px;
+  padding: 25px 0 25px 20px;
 }
 
 .menu-nombre {
@@ -162,7 +169,7 @@ body {
   height: 1.5em;
   background: #9356DC;
   border-radius: 50%;
-  color: #ffffff;
+  color: #f7f7f7;
   min-width: 1.5em;
 }
 
@@ -211,8 +218,8 @@ body {
 }
 
 .cards h2 {
-  font-size: 30px;
-  padding-left: 20px;
+  font-size: 25px;
+  padding: 25px 0 25px 20px;
 }
 
 .notification-nouveau {
@@ -308,7 +315,7 @@ a:hover .fa-store:before {
 .footer a,
 .footer p,
 .footer .icone {
-  color: #ffffff;
+  color: #f7f7f7;
   text-decoration: none;
   cursor: pointer;
 }
@@ -327,6 +334,9 @@ a:hover .fa-store:before {
     width: 100%;
     cursor: pointer;
   }
+  .geolocalisation {
+    box-shadow: 0 0.3rem 0.3rem rgba(63, 59, 59, 0.15), 0 -0.3rem 0.3rem rgba(63, 59, 59, 0.15);
+  }
   .cards .card {
     display: flex;
     flex-direction: column;
@@ -344,5 +354,224 @@ a:hover .fa-store:before {
   }
   .footer-responsive-logo {
     order: 0;
+  }
+  .content {
+    width: 100%;
+  }
+  .icone-content {
+    justify-content: space-between;
+  }
+}
+/** Version desktop restaurant **/
+/* header */
+.fleche-retour {
+  position: relative;
+}
+
+.fleche {
+  position: absolute;
+  left: 2rem;
+  width: 2rem;
+  top: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+/* bannière */
+.banner {
+  width: 100%;
+  height: 390px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* section restaurant */
+.restaurant-container {
+  position: absolute;
+  top: 430px;
+  width: 100%;
+}
+
+.content {
+  border-radius: 30px 30px 0 0;
+  background: #f7f7f7;
+  margin: auto;
+  width: 70%;
+}
+
+/* section restaurant - card-container */
+.restaurant-section {
+  padding-left: 20px;
+  padding-top: 1px;
+}
+
+.card-container {
+  padding-right: 50px;
+}
+.card-container h2 {
+  margin-right: 4rem;
+  font-family: "Shrikhand", cursive;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 41px;
+  padding: 1.25rem 1rem;
+}
+.card-container i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  margin-right: -30px;
+  cursor: pointer;
+  padding-top: 13px;
+}
+
+.icone-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* sections de menu */
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.menu-section h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #99e2d0;
+  width: 40px;
+  padding-bottom: 5px;
+}
+.menu-section .menu-content-position {
+  padding-left: 15px;
+}
+.menu-section .menu-animation {
+  background: #99e2d0;
+  border-radius: 0 15px 15px 0;
+  height: 72.38px;
+  width: 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.prix {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 700;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-top: -22px;
+}
+
+.hover-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 0.5em 0 0;
+}
+
+.background-validation {
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: #99e2d0;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+.background-validation:hover {
+  transform: rotate(360deg);
+}
+
+/* animations */
+.carte-animation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: start;
+  width: 90%;
+}
+.carte-animation:hover .menu-animation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 59px;
+  opacity: 1;
+}
+.carte-animation:hover .menu-content-container {
+  width: 60%;
+  border-radius: 15px 0 0 15px;
+}
+
+.menu-content-container {
+  height: 72px;
+  background: #f7f7f7;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  margin-bottom: 30px;
+  width: 90%;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: width 0.2s;
+  flex: 1;
+  animation: show_check 0.2s;
+}
+.menu-content-container h4 {
+  margin: 0.5em 0;
+}
+
+/* Styles pour les différentes sections de menu (Entrée, Plat, Dessert) */
+.menu-entree,
+.menu-plat,
+.menu-dessert {
+  animation: fade-in 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+.menu-entree.menu-entree,
+.menu-plat.menu-entree,
+.menu-dessert.menu-entree {
+  animation-delay: 0.2s;
+}
+.menu-entree.menu-plat,
+.menu-plat.menu-plat,
+.menu-dessert.menu-plat {
+  animation-delay: 0.4s;
+}
+.menu-entree.menu-dessert,
+.menu-plat.menu-dessert,
+.menu-dessert.menu-dessert {
+  animation-delay: 0.6s;
+}
+
+/* version mobile du restaurant */
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+  .icone-content {
+    justify-content: space-between;
   }
 }/*# sourceMappingURL=style.css.map */

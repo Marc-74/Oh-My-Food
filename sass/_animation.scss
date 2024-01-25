@@ -3,3 +3,15 @@
 @keyframes spin { to { transform: rotate(1turn); } }
 
 @keyframes fade-out { to { opacity: 0; } }
+
+/* animations pages restaurants */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
