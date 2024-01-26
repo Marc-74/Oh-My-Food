@@ -18,8 +18,8 @@
 
 @mixin card {
     @include flex-column;
+    background: $blanc;
     position: relative;
-    background: $light-color;
     border-radius: 15px;
     margin-bottom: 25px;
 }
@@ -28,7 +28,14 @@
     background: linear-gradient(1deg, $primary-color 0%, $secondary-color 100%);
 }
 
-/** ombre portée sur le bouton explorer **/
+/** ombre portée sur le header de la version mobile **/
+
+@mixin header-shadow {
+    box-shadow: inset 0 6px 12px -1px rgba(202, 202, 202, 0.5),
+                inset 0 -4px 4px -6px rgba(202, 202, 202, 0.5);
+}
+
+/** ombre portée sur les boutons explorer et commander **/
 
 @mixin box-shadow($color: rgba(63, 59, 59, 0.15)) {
     box-shadow: 0 0.3rem 0.3rem $color, 0 -0.3rem 0.3rem $color;

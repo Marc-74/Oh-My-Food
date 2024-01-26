@@ -29,8 +29,8 @@ body {
   margin: 8px;
   border-radius: 50%;
   border: 6px solid #fff;
-  border-color: $primary-color transparent $grey-color;
-  animation: spin 1.2s linear infinite;
+  border-color: $couleur-primaire transparent $gris;
+  animation: spin 1.5s linear infinite;
 }
 
 /** version desktop **/
@@ -54,7 +54,7 @@ body {
 }
 
 .geolocalisation {
-  background-color: $accent-color;
+  background-color: $geolocalisation-couleur;
 }
 
 .container-bouton {
@@ -74,7 +74,7 @@ body {
 }
 
 .bouton {
-  @include gradient-background($primary-color, $secondary-color);
+  @include gradient-background($couleur-primaire, $couleur-secondaire);
   @include box-shadow;
   color: $background-color;
   width: 300px;
@@ -131,7 +131,7 @@ body {
   margin-left: -12px;
   width: 1.5em;
   height: 1.5em;
-  background: $primary-color;
+  background: $couleur-primaire;
   border-radius: 50%;
   color: $background-color;
   min-width: 1.5em;
@@ -146,7 +146,6 @@ body {
 
   .card {
     @include card;
-    cursor: pointer;
 
     &-content {
       padding: 3.4vw;
@@ -183,8 +182,8 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: $notification-color;
-  color: $green-color;
+  background-color: $couleur-tertiare;
+  color: $vert;
   font-size: 14px;
   font-weight: bold;
   padding: 5px 10px;
@@ -195,17 +194,21 @@ body {
 /** icônes **/
 
 .fa-solid {
-  color: $grey-color;
+  color: $gris;
 }
 
 a:hover .fa-store:before {
-  color: $primary-color;
+  color: $couleur-primaire;
 }
 
 .fa-store:before,
 .fa-list:before,
 .fa-mobile-screen-button:before {
   font-size: 20px;
+}
+
+.fa-location-dot:before {
+color: $noir;
 }
 
 /** icône coeur **/
@@ -223,8 +226,10 @@ a:hover .fa-store:before {
 .icone-coeur .fa-heart {
   position: absolute;
   @include transition;
+  animation: fadeInOut 0.5s ease-in-out;
   margin: -5px 0 0 -55px;
   font-size: 20px;
+  cursor: pointer;
 
 }
 
@@ -234,7 +239,7 @@ a:hover .fa-store:before {
 
 .icone-changement {
   opacity: 0;
-  @include gradient-background($primary-color, $secondary-color);
+  @include gradient-background($couleur-primaire, $couleur-secondaire);
   background-clip: text;
   color: transparent;
 }
@@ -244,8 +249,7 @@ a:hover .fa-store:before {
 .footer {
   @include flex-row;
   background: $footer-background;
-  padding-bottom: 22px;
-  height: 186px;
+  padding-top: 40px;
   align-items: center;
   justify-content: flex-end;
 
@@ -262,7 +266,7 @@ a:hover .fa-store:before {
     justify-content: flex-start;
     padding-left: 24px;
     gap: 12px;
-    line-height: 10%;
+    line-height: 120%;
   }
 
   &-icone-- i {
@@ -286,43 +290,55 @@ a:hover .fa-store:before {
 /** version mobile **/
 
 @media (max-width: 768px) {
-  .menu-responsive-one, .cards, .footer {
+  .geolocalisation {
+    @include header-shadow;
+  }
+
+ .menu-responsive-one,
+  .cards,
+  .footer {
     @include flex-column;
     align-items: flex-start;
     width: 100%;
     cursor: pointer;
-  }
 
-  .geolocalisation {
-    @include box-shadow;
-  }
-  
-  .cards {
-    .card {
-      @include card;
+    &.cards {
+      .card {
+        @include card;
 
-      &-content {
-        width: 93%;
+        &-content {
+          width: 93%;
+        }
       }
     }
-  }
 
-  .footer-logo {
-    margin: 0;
-  }
+    & .footer-logo {
+      margin: 0;
+    }
 
-  .footer-responsive-logo {
-    order: 0;
-  }
+    & .footer-responsive-logo {
+      order: 0;
+    }
 
-   .content {
-    width: 100%;
-  }
+    & .content {
+      width: 100%;
+    }
 
-  .icone-content {
-    justify-content: space-between;
+    .icone-content {
+      justify-content: space-between;
+    }
+
+    & p {
+      line-height: 0%;
+    }
+
+    &.footer {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
   }
 }
+
 
 /** Version desktop restaurant **/
 
@@ -333,15 +349,15 @@ a:hover .fa-store:before {
 }
 
 .fleche {
+  @include flex-row;
   position: absolute;
+  color: $noir;
   left: 2rem;
   width: 2rem;
   top: 50%;
-  @include flex-row;
   align-items: center;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: $noir;
 }
 
 /* bannière */
@@ -349,7 +365,6 @@ a:hover .fa-store:before {
 .banner {
   width: 100%;
   height: 390px;
-  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -362,29 +377,24 @@ a:hover .fa-store:before {
 }
 
 .content {
+  width: 85%;
   border-radius: 30px 30px 0 0;
   background: $background-color;
   margin: auto;
-  width: 70%;
 }
 
 /* section restaurant - card-container */
 
 .restaurant-section {
-  padding-left: 20px;
-  padding-top: 1px;
+  padding: 1px 0 0 20px;
 }
 
 .card-container {
-  padding-right: 50px;
-
+    padding-right: 50px; 
+  
   & h2 {
-    margin-right: 4rem;
-    font-family: "Shrikhand", cursive;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 41px;
+    font: italic 400 28px/41px "Shrikhand", cursive;
+    margin-right: 2rem;
     padding: 1.25rem 1rem;
   }
 
@@ -409,15 +419,15 @@ a:hover .fa-store:before {
   @include flex-column;
   align-content: center;
   flex-wrap: wrap;
+  margin: auto;
+  width: 80%;
 
   & h3 {
-    font-family: "Roboto";
-    font-style: normal;
     font-weight: 300;
     font-size: 16px;
     line-height: 19px;
     text-transform: uppercase;
-    border-bottom: 3px solid $notification-color;
+    border-bottom: 3px solid $couleur-tertiare;
     width: 40px;
     padding-bottom: 5px;
   }
@@ -427,9 +437,9 @@ a:hover .fa-store:before {
   }
 
   & .menu-animation {
-    background: $notification-color;
+    background: $couleur-tertiare;
     border-radius: 0 15px 15px 0;
-    height: 72.38px;
+    height: 72px;
     width: 0%;
     @include flex-row;
     align-items: center;
@@ -442,10 +452,10 @@ a:hover .fa-store:before {
 
 .prix {
   @include flex-row;
-  font-weight: 700;
   justify-content: flex-end;
+  font-weight: 700;
   padding-right: 20px;
-  margin-top: -22px;
+  margin-top: -23px;
 }
 
 .hover-effect {
@@ -456,12 +466,12 @@ a:hover .fa-store:before {
 }
 
 .background-validation {
-  background-color: white;
+  background-color: $blanc;
+  color: $couleur-tertiare;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   text-align: center;
-  color: $notification-color;
   font-weight: bold;
   transition: transform 0.3s ease-in-out;
 
@@ -493,16 +503,13 @@ a:hover .fa-store:before {
 
 .menu-content-container {
   height: 72px;
-  background: $background-color;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   margin-bottom: 30px;
   width: 90%;
   line-height: 1.5;
   cursor: pointer;
-  transition: width 0.2s;
   flex: 1;
-  animation: show_check 0.2s;
 
   & h4 {
     margin: 0.5em 0;
@@ -530,10 +537,10 @@ a:hover .fa-store:before {
   }
 }
 
-/* version mobile du restaurant */
+/* version mobile restaurant */
 
 @media (max-width: 768px) {
-  .content {
+  .content, .menu-section {
     width: 100%;
   }
 
@@ -541,3 +548,4 @@ a:hover .fa-store:before {
     justify-content: space-between;
   }
 }
+
