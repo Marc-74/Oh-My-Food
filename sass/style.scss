@@ -13,7 +13,7 @@ body {
   @include flex-row;
   position: fixed;
   inset: 0;
-  background-color: rgba($background-color, 0.9);; /** variable de couleur & function intensité **/
+  background-color: rgba($background-color, 0.9); /** variable de couleur & function intensité **/
   z-index: 9999;
   align-items: center;
   pointer-events: none;
@@ -84,12 +84,13 @@ body {
   border: none;
   margin-bottom: 50px;
   transition-property: transform;
-  transition-duration: 150ms;
+  transition-duration: 450ms;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.15);
     opacity: 0.8;
+    box-shadow: 0 0 10px rgba(63, 59, 59, 1.25);
   }
 }
 
@@ -209,6 +210,7 @@ a:hover .fa-store:before {
 
 .fa-location-dot:before {
 color: $noir;
+cursor: pointer;
 }
 
 /** icône coeur **/

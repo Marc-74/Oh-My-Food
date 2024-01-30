@@ -116,12 +116,13 @@ body {
   border: none;
   margin-bottom: 50px;
   transition-property: transform;
-  transition-duration: 150ms;
+  transition-duration: 450ms;
   cursor: pointer;
 }
 .bouton:hover {
   transform: scale(1.15);
   opacity: 0.8;
+  box-shadow: 0 0 10px rgb(63, 59, 59);
 }
 
 .menu-container {
@@ -252,6 +253,7 @@ a:hover .fa-store:before {
 
 .fa-location-dot:before {
   color: #000000;
+  cursor: pointer;
 }
 
 /** icône coeur **/
